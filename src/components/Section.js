@@ -44,15 +44,17 @@ export default function Section({ title, id, dishes, isSeeAll }) {
   };
 
   return (
-    <div
-      className="section"
-      style={
-        (isSeeAll && title !== "See All") || (!isSeeAll && title === "See All")
-          ? { display: "none" }
-          : {}
-      }
-    >
-      <div className="section-content" id={id}>
+    <div className="section">
+      <div
+        className="section-content"
+        id={id}
+        style={
+          (isSeeAll && title !== "See All") ||
+          (!isSeeAll && title === "See All")
+            ? { display: "none" }
+            : {}
+        }
+      >
         <h1>{title}</h1>
         <div className="dishes-list">
           {dishes.map((dish, index) => {
