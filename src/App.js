@@ -13,8 +13,14 @@ class App extends React.Component {
       express_delivery: [],
       gourment: [],
       only_on_swiggy: [],
+      isSeeAll: false,
     };
   }
+  handleSeeAll = (value) => () => {
+    const { isSeeAll } = this.state;
+    if (isSeeAll === value) return;
+    this.setState({ isSeeAll: value });
+  };
   transformData(data) {
     for (let resturant of data) {
       const { category, restaurantList } = resturant;
@@ -74,28 +80,54 @@ class App extends React.Component {
       only_on_swiggy,
       express_delivery,
       gourment,
+      isSeeAll,
     } = this.state;
     return (
       <div className="App">
-        <Navbar />
+        <Navbar handleSeeAll={this.handleSeeAll} />
         <div>
           <Section
             title="Popular Brands"
             id="section1"
             dishes={popular_brands}
+            isSeeAll={isSeeAll}
           />
           <Section
             title="Offers Near You"
             id="section2"
             dishes={offers_near_you}
+            isSeeAll={isSeeAll}
           />
           <Section
             title="Express Delivery"
             id="section3"
             dishes={only_on_swiggy}
+            isSeeAll={isSeeAll}
           />
-          <Section title="Gourment" id="section4" dishes={express_delivery} />
-          <Section title="Only on swiggy" id="section5" dishes={gourment} />
+          <Section
+            title="Gourment"
+            id="section4"
+            dishes={express_delivery}
+            isSeeAll={isSeeAll}
+          />
+          <Section
+            title="Only on swiggy"
+            id="section5"
+            dishes={gourment}
+            isSeeAll={isSeeAll}
+          />
+
+          <Section
+            title="See All"
+            id="section6"
+            dishes={[
+              ...popular_brands,
+              ...offers_near_you,
+              ...express_delivery,
+              ...gourment,
+            ]}
+            isSeeAll={isSeeAll}
+          />
         </div>
       </div>
     );

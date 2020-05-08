@@ -14,8 +14,7 @@ const urls = [
   "https://images.unsplash.com/photo-1504544750208-dc0358e63f7f?auto=format&fit=crop&w=500&q=60",
 ];
 
-export default function Section({ title, id, dishes }) {
-  console.log("h----------------------->", title, dishes);
+export default function Section({ title, id, dishes, isSeeAll }) {
   const [totalShown, setTotalShown] = useState(5);
 
   const showExtraDish = () => {
@@ -45,16 +44,23 @@ export default function Section({ title, id, dishes }) {
   };
 
   return (
-    <div className="section">
+    <div
+      className="section"
+      style={
+        (isSeeAll && title !== "See All") || (!isSeeAll && title === "See All")
+          ? { display: "none" }
+          : {}
+      }
+    >
       <div className="section-content" id={id}>
         <h1>{title}</h1>
         <div className="dishes-list">
           {dishes.map((dish, index) => {
             const imgSrc = urls[Math.floor(11 * Math.random())];
-            if (index >= totalShown) return <></>;
+            if (index >= totalShown && !isSeeAll) return;
             return <DishCard key={index} dish={dish} imgSrc={imgSrc} />;
           })}
-          {totalShown < dishes.length && giveExtraButton()}
+          {totalShown < dishes.length && !isSeeAll && giveExtraButton()}
         </div>
       </div>
     </div>

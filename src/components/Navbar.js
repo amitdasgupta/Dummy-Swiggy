@@ -8,6 +8,7 @@ export default class Navbar extends Component {
   };
 
   render() {
+    const { handleSeeAll } = this.props;
     return (
       <nav className="nav" id="navbar">
         <img
@@ -26,6 +27,7 @@ export default class Navbar extends Component {
                 smooth={true}
                 offset={-70}
                 duration={500}
+                onClick={handleSeeAll(false)}
               >
                 Popular Brands
               </Link>
@@ -38,6 +40,7 @@ export default class Navbar extends Component {
                 smooth={true}
                 offset={-70}
                 duration={500}
+                onClick={handleSeeAll(false)}
               >
                 Offers Near You
               </Link>
@@ -50,6 +53,7 @@ export default class Navbar extends Component {
                 smooth={true}
                 offset={-70}
                 duration={500}
+                onClick={handleSeeAll(false)}
               >
                 Express Delivery
               </Link>
@@ -62,6 +66,7 @@ export default class Navbar extends Component {
                 smooth={true}
                 offset={-70}
                 duration={500}
+                onClick={handleSeeAll(false)}
               >
                 Gourment
               </Link>
@@ -73,6 +78,7 @@ export default class Navbar extends Component {
                 spy={true}
                 smooth={true}
                 offset={-70}
+                onClick={handleSeeAll(false)}
                 duration={500}
               >
                 Only on swiggy
@@ -86,6 +92,7 @@ export default class Navbar extends Component {
                 smooth={true}
                 offset={-70}
                 duration={500}
+                onClick={handleSeeAll(true)}
               >
                 See All
               </Link>
