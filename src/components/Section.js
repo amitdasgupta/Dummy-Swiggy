@@ -56,7 +56,7 @@ export default function Section({ title, id, dishes, isSeeAll }) {
         <h1>{title}</h1>
         <div className="dishes-list">
           {dishes.map((dish, index) => {
-            const imgSrc = urls[Math.floor(11 * Math.random())];
+            const imgSrc = urls[index % 11];
             if (index >= totalShown && !isSeeAll) return;
             return <DishCard key={index} dish={dish} imgSrc={imgSrc} />;
           })}
