@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import DishCard from "./DishCard";
 const urls = [
   "https://images.unsplash.com/photo-1484723091739-30a097e8f929?auto=format&fit=crop&w=500&q=60",
@@ -16,6 +16,34 @@ const urls = [
 
 export default function Section({ title, id, dishes }) {
   console.log("h----------------------->", title, dishes);
+  const [totalShown, setTotalShown] = useState(5);
+
+  const showExtraDish = () => {
+    setTotalShown(totalShown + 6);
+  };
+
+  const giveExtraButton = () => {
+    return (
+      <div
+        style={{
+          width: "250px",
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "center",
+          height: "250px",
+          border: "5px solid orange",
+          margin: "20px",
+          color: "orange",
+          fontWeight: "bold",
+          fontSize: "1.5rem",
+          cursor: "grab",
+        }}
+        onClick={showExtraDish}
+      >{`+${dishes.length - totalShown} More`}</div>
+    );
+  };
+
   return (
     <div className="section">
       <div className="section-content" id={id}>
@@ -23,8 +51,10 @@ export default function Section({ title, id, dishes }) {
         <div className="dishes-list">
           {dishes.map((dish, index) => {
             const imgSrc = urls[Math.floor(11 * Math.random())];
+            if (index >= totalShown) return <></>;
             return <DishCard key={index} dish={dish} imgSrc={imgSrc} />;
           })}
+          {totalShown < dishes.length && giveExtraButton()}
         </div>
       </div>
     </div>

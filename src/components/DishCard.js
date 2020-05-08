@@ -37,7 +37,7 @@ export default function DishCard(props) {
         >
           {food_types.map((name, index) => {
             return (
-              <span>
+              <span key={index}>
                 {name}
                 {index < food_types.length - 1 && ","}
               </span>
