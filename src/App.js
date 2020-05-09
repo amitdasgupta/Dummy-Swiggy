@@ -65,10 +65,14 @@ class App extends React.Component {
     this.setState({ only_on_swiggy: swiggyData });
   }
   async fetchData() {
-    const fetchedData = await axios.get("http://localhost:3010/mydata/");
-    const { data } = fetchedData;
-    this.transformData(data);
-    this.getSwiggyData();
+    try {
+      const fetchedData = await axios.get("http://localhost:3010/mydata/");
+      const { data } = fetchedData;
+      this.transformData(data);
+      this.getSwiggyData();
+    } catch (error) {
+      console.log("error ocurred in fecthing data", error);
+    }
   }
   componentDidMount() {
     this.fetchData();
@@ -82,7 +86,6 @@ class App extends React.Component {
       gourment,
       isSeeAll,
     } = this.state;
-    console.log(this.state);
     return (
       <div className="App">
         <Navbar
