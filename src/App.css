@@ -60,7 +60,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: flex-start;
   align-items: center;
 }
 
@@ -137,4 +137,26 @@
   margin-top: 25px;
   width: 100%;
   background-color: lightgray;
+}
+
+/* some media queries here */
+@media only screen and (max-width: 1300px) {
+  .section-content {
+    width: 920px;
+  }
+  .nav-items {
+    padding: 0;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .dish-card {
+    width: 240px;
+  }
+}
+
+@media only screen and (max-width: 1150px) {
+  .section-content {
+    width: 850px;
+  }
 }
