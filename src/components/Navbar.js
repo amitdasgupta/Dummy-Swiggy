@@ -101,7 +101,7 @@ export default class Navbar extends Component {
               >
                 See All
                 <div className="items-count">
-                  {`${counts.reduce((cumm, curr) => cumm + curr, 0)}
+                  {`${counts.reduce((cumm, curr) => cumm + curr, -counts[4])}
                   options`}
                 </div>
               </Link>

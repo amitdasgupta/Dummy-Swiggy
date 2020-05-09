@@ -82,6 +82,7 @@ class App extends React.Component {
       gourment,
       isSeeAll,
     } = this.state;
+    console.log(this.state);
     return (
       <div className="App">
         <Navbar
@@ -89,9 +90,9 @@ class App extends React.Component {
           counts={[
             popular_brands.length,
             offers_near_you.length,
-            only_on_swiggy.length,
             express_delivery.length,
             gourment.length,
+            only_on_swiggy.length,
           ]}
         />
         <div>
@@ -110,19 +111,19 @@ class App extends React.Component {
           <Section
             title="Express Delivery"
             id="section3"
-            dishes={only_on_swiggy}
+            dishes={express_delivery}
             isSeeAll={isSeeAll}
           />
           <Section
             title="Gourment"
             id="section4"
-            dishes={express_delivery}
+            dishes={gourment}
             isSeeAll={isSeeAll}
           />
           <Section
             title="Only on swiggy"
             id="section5"
-            dishes={gourment}
+            dishes={only_on_swiggy}
             isSeeAll={isSeeAll}
           />
 
