@@ -15,7 +15,7 @@
 }
 
 .section {
-  margin-bottom: 82px;
+  margin-bottom: 50px;
   border-radius: 15px;
 }
 
@@ -32,6 +32,8 @@
   background-color: #ffaa2d;
   color: white;
   padding: 10px;
+  display: flex;
+  flex-direction: column;
 }
 
 .App {
@@ -123,4 +125,16 @@
   background-color: white;
   margin: 10px 0;
   color: white;
+}
+
+.items-count {
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.custom-footer-line {
+  height: 2px;
+  margin-top: 25px;
+  width: 100%;
+  background-color: lightgray;
 }

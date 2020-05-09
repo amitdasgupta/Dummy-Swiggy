@@ -8,7 +8,7 @@ export default class Navbar extends Component {
   };
 
   render() {
-    const { handleSeeAll } = this.props;
+    const { handleSeeAll, counts = [] } = this.props;
     return (
       <nav className="nav" id="navbar">
         <img
@@ -30,6 +30,7 @@ export default class Navbar extends Component {
                 onClick={handleSeeAll(false)}
               >
                 Popular Brands
+                <div className="items-count">{counts[0]} options</div>
               </Link>
             </li>
             <li className="nav-item">
@@ -43,6 +44,7 @@ export default class Navbar extends Component {
                 onClick={handleSeeAll(false)}
               >
                 Offers Near You
+                <div className="items-count">{counts[1]} options</div>
               </Link>
             </li>
             <li className="nav-item">
@@ -56,6 +58,7 @@ export default class Navbar extends Component {
                 onClick={handleSeeAll(false)}
               >
                 Express Delivery
+                <div className="items-count">{counts[2]} options</div>
               </Link>
             </li>
             <li className="nav-item">
@@ -69,6 +72,7 @@ export default class Navbar extends Component {
                 onClick={handleSeeAll(false)}
               >
                 Gourment
+                <div className="items-count">{counts[3]} options</div>
               </Link>
             </li>
             <li className="nav-item">
@@ -82,6 +86,7 @@ export default class Navbar extends Component {
                 duration={500}
               >
                 Only on swiggy
+                <div className="items-count">{counts[4]} options</div>
               </Link>
             </li>
             <li className="nav-item">
@@ -95,6 +100,10 @@ export default class Navbar extends Component {
                 onClick={handleSeeAll(true)}
               >
                 See All
+                <div className="items-count">
+                  {`${counts.reduce((cumm, curr) => cumm + curr, 0)}
+                  options`}
+                </div>
               </Link>
             </li>
           </ul>

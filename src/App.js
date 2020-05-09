@@ -20,6 +20,7 @@ class App extends React.Component {
     const { isSeeAll } = this.state;
     if (isSeeAll === value) return;
     this.setState({ isSeeAll: value });
+    window.scrollTo(0, 1);
   };
   transformData(data) {
     for (let resturant of data) {
@@ -73,7 +74,6 @@ class App extends React.Component {
     this.fetchData();
   }
   render() {
-    console.log(this.state);
     const {
       popular_brands,
       offers_near_you,
@@ -84,7 +84,16 @@ class App extends React.Component {
     } = this.state;
     return (
       <div className="App">
-        <Navbar handleSeeAll={this.handleSeeAll} />
+        <Navbar
+          handleSeeAll={this.handleSeeAll}
+          counts={[
+            popular_brands.length,
+            offers_near_you.length,
+            only_on_swiggy.length,
+            express_delivery.length,
+            gourment.length,
+          ]}
+        />
         <div>
           <Section
             title="Popular Brands"

@@ -44,27 +44,28 @@ export default function Section({ title, id, dishes, isSeeAll }) {
   };
 
   return (
-    <div className="section">
-      <div
-        className="section-content"
-        id={id}
-        style={
-          (isSeeAll && title !== "See All") ||
-          (!isSeeAll && title === "See All")
-            ? { display: "none" }
-            : {}
-        }
-      >
+    <div
+      className="section"
+      style={
+        (isSeeAll && title !== "See All") || (!isSeeAll && title === "See All")
+          ? { display: "none" }
+          : {}
+      }
+    >
+      <div className="section-content" id={id}>
         <h1>{title}</h1>
         <div className="dishes-list">
           {dishes.map((dish, index) => {
             const imgSrc = urls[index % 11];
-            if (index >= totalShown && !isSeeAll) return;
+            if (index >= totalShown && title !== "See All") return;
             return <DishCard key={index} dish={dish} imgSrc={imgSrc} />;
           })}
-          {totalShown < dishes.length && !isSeeAll && giveExtraButton()}
+          {totalShown < dishes.length &&
+            title !== "See All" &&
+            giveExtraButton()}
         </div>
       </div>
+      <div className="custom-footer-line"></div>
     </div>
   );
 }
